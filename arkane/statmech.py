@@ -57,6 +57,7 @@ from arkane.log import Log
 from arkane.gaussian import GaussianLog
 from arkane.molpro import MolproLog
 from arkane.qchem import QChemLog
+from arkane.terachem import TeraChemLog
 from arkane.common import symbol_by_number
 from arkane.common import ArkaneSpecies
 
@@ -944,28 +945,29 @@ def applyEnergyCorrections(E0, modelChemistry, atoms, bonds,
 
 def determine_qm_software(fullpath):
     """
-    Given a path to the log file of a QM software, determine whether it is Gaussian, Molpro, or QChem
+    Given a path to the log file of a QM software, determine whether it is Gaussian, Molpro, QChem, or TeraChem
     """
     with open(fullpath, 'r') as f:
         line = f.readline()
         software_log = None
         while line != '':
             if 'gaussian' in line.lower():
-                f.close()
                 software_log = GaussianLog(fullpath)
                 break
             elif 'qchem' in line.lower():
-                f.close()
                 software_log = QChemLog(fullpath)
                 break
             elif 'molpro' in line.lower():
-                f.close()
                 software_log = MolproLog(fullpath)
+                break
+            elif 'terachem' in line.lower():
+                software_log = TeraChemLog(fullpath)
                 break
             line = f.readline()
         else:
-            raise InputError(
-                "File at {0} could not be identified as a Gaussian, QChem or Molpro log file.".format(fullpath))
+            f.close()
+            raise InputError('File at {0} could not be identified as a Gaussian, QChem or Molpro log file.'.format(
+                fullpath))
     return software_log
 
 
