@@ -1030,7 +1030,7 @@ class RMG(util.Subject):
         """
         if self.uncertainty is not None and self.uncertainty['global']:
             try:
-                import libmuqModelling
+                import muq
             except ImportError:
                 logging.error('Unable to import MUQ. Skipping global uncertainty analysis.')
                 self.uncertainty['global'] = False
@@ -1038,7 +1038,7 @@ class RMG(util.Subject):
                 import re
                 import random
                 from rmgpy.tools.canteraModel import Cantera
-                from rmgpy.tools.muq import ReactorPCEFactory
+                from rmgpy.tools.globaluncertainty import ReactorPCEFactory
 
         if self.uncertainty is not None and self.uncertainty['local']:
             correlation = []
