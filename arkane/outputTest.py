@@ -40,15 +40,16 @@ from nose.plugins.attrib import attr
 
 import rmgpy
 from arkane.main import Arkane
+from arkane.output import prettify
 
 
 @attr('functional')
 class OutputTest(unittest.TestCase):
     """
-    Contains unit tests for the Arkane's output module.
+    Contains functional tests for Arkane's output module.
     """
     def test_prettify(self):
-        """A function that is run ONCE before all unit tests in this class."""
+        """Test that the prettify function works for an Arkane job"""
         benzyl_path = os.path.join(os.path.dirname(os.path.dirname(rmgpy.__file__)),
                                    'examples', 'arkane', 'species', 'Benzyl')
 
@@ -61,7 +62,6 @@ class OutputTest(unittest.TestCase):
         self.assertIn("    E0 = (193.749, 'kJ/mol'),\n", lines)
         self.assertIn('thermo(\n', lines)
         self.assertIn("        Cp0 = (33.2579, 'J/(mol*K)'),\n", lines)
-
 
     @classmethod
     def tearDownClass(cls):
