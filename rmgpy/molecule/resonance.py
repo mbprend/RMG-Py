@@ -1011,7 +1011,7 @@ def _clar_optimization(mol, constraints=None, max_num=None):
             try:
                 lpsolve('add_constraint', lp, constraint[0], '<=', constraint[1])
             except Exception as e:
-                logging.debug('Unable to add constraint: {0} <= {1}'.format(constraint[0], constraint[1]))
+                logging.debug('Unable to add constraint: %s <= %s', constraint[0], constraint[1])
                 logging.debug(mol.to_adjacency_list())
                 if str(e) == 'invalid vector.':
                     raise ILPSolutionError('Unable to add constraint, likely due to '

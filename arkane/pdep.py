@@ -296,7 +296,7 @@ class PressureDependenceJob(object):
                     raise e
                 logging.info("Completed the sensitivity analysis using a perturbation of {0} kcal/mol".format(
                     perturbation))
-        logging.debug('Finished pdep job for reaction {0}.'.format(self.network.label))
+        logging.debug('Finished pdep job for reaction %s.', self.network.label)
         logging.debug(repr(self.network))
 
     def generate_T_list(self):
@@ -424,7 +424,7 @@ class PressureDependenceJob(object):
                 order = len(reaction.reactants)
                 kdata *= 1e6 ** (order - 1)
                 k_units = {1: 's^-1', 2: 'cm^3/(mol*s)', 3: 'cm^6/(mol^2*s)'}[order]
-                logging.debug('Fitting master eqn data to kinetics for reaction {}.'.format(reaction))
+                logging.debug('Fitting master eqn data to kinetics for reaction %s.', reaction)
                 reaction.kinetics = self.fit_interpolation_model(Tdata, Pdata, kdata, k_units)
 
                 self.network.net_reactions.append(reaction)

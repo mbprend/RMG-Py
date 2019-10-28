@@ -168,8 +168,8 @@ class Log(object):
             if pg is not None:
                 optical_isomers = 2 if pg.chiral else 1
                 symmetry = pg.symmetry_number
-                logging.debug("Symmetry algorithm found {0} optical isomers and a symmetry number of {1}".format(
-                    optical_isomers, symmetry))
+                logging.debug("Symmetry algorithm found %s optical isomers and a symmetry number of %s",
+                    optical_isomers, symmetry)
             else:
                 logging.error('Symmetry algorithm errored when computing point group\nfor log file located at{0}.\n'
                               'Manually provide values in Arkane input.'.format(self.path))

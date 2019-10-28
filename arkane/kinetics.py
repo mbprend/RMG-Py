@@ -143,7 +143,7 @@ class KineticsJob(object):
             if self.sensitivity_conditions is not None:
                 logging.info('\n\nRunning sensitivity analysis...')
                 SensAnalysis(self, output_directory)
-        logging.debug('Finished kinetics job for reaction {0}.'.format(self.reaction))
+        logging.debug('Finished kinetics job for reaction %s.', self.reaction)
         logging.debug(repr(self.reaction))
 
     def generate_kinetics(self):
@@ -172,7 +172,7 @@ class KineticsJob(object):
                 pass
             else:
                 raise ValueError('Unknown tunneling model {0!r} for reaction {1}.'.format(tunneling, self.reaction))
-        logging.debug('Generating {0} kinetics model for {1}...'.format(kinetics_class, self.reaction))
+        logging.debug('Generating %s kinetics model for %s...', kinetics_class, self.reaction)
         klist = np.zeros_like(self.Tlist.value_si)
         for i, t in enumerate(self.Tlist.value_si):
             klist[i] = self.reaction.calculate_tst_rate_coefficient(t)

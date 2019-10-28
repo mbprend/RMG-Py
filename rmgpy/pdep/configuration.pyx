@@ -230,7 +230,7 @@ cdef class Configuration(object):
         cdef list modes
         cdef int i
 
-        logging.debug('calculating density of states for {}'.format(self.__str__()))
+        logging.debug('calculating density of states for %s', self.__str__())
 
         self.e_list = e_list
         self.active_j_rotor = active_j_rotor

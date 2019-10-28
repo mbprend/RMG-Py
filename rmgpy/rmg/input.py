@@ -252,7 +252,7 @@ def simple_reactor(temperature,
     if constantSpecies is not None:
         logging.debug('  Generation with constant species:')
         for const_spc in constantSpecies:
-            logging.debug("  {0}".format(const_spc))
+            logging.debug("  %s", const_spc)
             if const_spc not in species_dict:
                 raise InputError('Species {0} not found in the input file'.format(const_spc))
     

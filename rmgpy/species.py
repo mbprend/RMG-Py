@@ -763,7 +763,7 @@ class Species(object):
         have already provided a thermodynamics model using e.g.
         :meth:`generate_thermo_data()`.
         """
-        logging.debug("Generating statmech for species {}".format(self.label))
+        logging.debug("Generating statmech for species %s", self.label)
         from rmgpy.data.rmg import get_db
         try:
             statmech_db = get_db('statmech')

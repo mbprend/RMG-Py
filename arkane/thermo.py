@@ -110,7 +110,7 @@ class ThermoJob(object):
 
         species = self.species
 
-        logging.debug('Generating {0} thermo model for {1}...'.format(self.thermo_class, species))
+        logging.debug('Generating %s thermo model for %s...', self.thermo_class, species)
 
         if species.thermo is not None:
             logging.info("Thermo already generated for species {}. Skipping thermo generation.".format(species))

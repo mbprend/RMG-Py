@@ -221,7 +221,7 @@ class ArkaneSpecies(RMGObject):
         full_path = os.path.join(path, filename)
         with open(full_path, 'w') as f:
             yaml.dump(data=self.as_dict(), stream=f)
-        logging.debug('Dumping species {0} data as {1}'.format(self.label, filename))
+        logging.debug('Dumping species %s data as %s', self.label, filename)
 
     def load_yaml(self, path, label=None, pdep=False):
         """
@@ -241,11 +241,11 @@ class ArkaneSpecies(RMGObject):
             # First, warn the user if the label doesn't match
             try:
                 if label != data['label']:
-                    logging.debug('Found different labels for species: {0} in input file, and {1} in the .yml file. '
-                                  'Using the label "{0}" for this species.'.format(label, data['label']))
+                    logging.debug('Found different labels for species: %s in input file, and %s in the .yml file. '
+                                  'Using the label "%s" for this species.', label, data['label'], label)
             except KeyError:
                 # Lacking label in the YAML file is strange, but accepted
-                logging.debug('Did not find label for species {0} in .yml file.'.format(label))
+                logging.debug('Did not find label for species %s in .yml file.', label)
 
             # Then, set the ArkaneSpecies label to the user supplied label
             data['label'] = label

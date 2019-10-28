@@ -166,7 +166,7 @@ class Mopac(object):
         If all succeed, then it will return True.
         """
         if not os.path.exists(self.output_file_path):
-            logging.debug("Output file {0} does not (yet) exist.".format(self.output_file_path))
+            logging.debug("Output file %s does not (yet) exist.", self.output_file_path)
             return False
 
         inchi_found = False  # flag (1 or 0) indicating whether an InChI was found in the log file

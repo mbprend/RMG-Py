@@ -352,7 +352,7 @@ class SoluteLibrary(Database):
         try:
             spc = Species().from_smiles(molecule)
         except:
-            logging.debug("Solute '{0}' does not have a valid SMILES '{1}'".format(label, molecule))
+            logging.debug("Solute '%s' does not have a valid SMILES '%s'", label, molecule)
             try:
                 spc = Species().from_adjacency_list(molecule)
             except:

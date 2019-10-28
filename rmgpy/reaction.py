@@ -1227,7 +1227,7 @@ class Reaction:
             conditions.append([t_min, p_max])
             if t_min != t_max:
                 conditions.append([t_max, p_max])
-        logging.debug("Checking whether reaction {0} violates the collision rate limit...".format(self))
+        logging.debug("Checking whether reaction %s violates the collision rate limit...", self)
         violator_list = []
         kf_list = []
         kr_list = []

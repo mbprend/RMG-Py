@@ -586,7 +586,7 @@ def apply_kinetic_isotope_effect_simple(rxn_clusters, kinetics_database):
             logging.warning('isotope: kinetic isotope effect of family {0} not encoded into RMG. '
                             'Ignoring KIE of reaction {1}'.format(cluster[0].family, cluster[-1]))
             continue
-        logging.debug('modifying reaction rate for cluster {0} for family {1}'.format(index, family.name))
+        logging.debug('modifying reaction rate for cluster %s for family %s', index, family.name)
         # get base reduced mass
         reaction = cluster[-1]  # set unlabeled reaction as the standard to compare
         labeled_reactants = get_labeled_reactants(reaction, family)

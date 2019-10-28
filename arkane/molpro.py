@@ -315,8 +315,8 @@ class MolproLog(Log):
                     # First search for MRCI+Davidson energy
                     if '(Davidson, relaxed reference)' in line:
                         e_elect = float(line.split()[3])
-                        logging.debug('Found MRCI+Davidson energy in molpro log file {0}, using this value'.format(
-                            self.path))
+                        logging.debug('Found MRCI+Davidson energy in molpro log file %s, using this value',
+                            self.path)
                         break
                 elif not f12:
                     if 'Electronic Energy at 0' in line:
@@ -336,11 +336,11 @@ class MolproLog(Log):
                         break
                     if all(w in line for w in ('MRCI', 'MULTI', 'HF-SCF')):
                         read_e_elect = True
-        logging.debug('Molpro energy found is {0} Hartree'.format(e_elect))
+        logging.debug('Molpro energy found is %s Hartree', e_elect)
         # multiply e_elect by correct constants
         if e_elect is not None:
             e_elect *= constants.E_h * constants.Na
-            logging.debug('Molpro energy found is {0} J/mol'.format(e_elect))
+            logging.debug('Molpro energy found is %s J/mol', e_elect)
             return e_elect
         else:
             raise LogError('Unable to find energy in Molpro log file {0}.'.format(self.path))

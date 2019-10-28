@@ -494,7 +494,7 @@ def _read(mol, identifier, identifier_type, backend):
             mol.update_atomtypes()
             return mol
         else:
-            logging.debug('Backend {0} is not able to parse identifier {1}'.format(option, identifier))
+            logging.debug('Backend %s is not able to parse identifier %s', option, identifier)
 
     raise ValueError("Unable to correctly parse {0} with backend {1}.".format(identifier, backend))
 

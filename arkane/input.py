@@ -136,7 +136,7 @@ def species(label, *args, **kwargs):
         # The argument is a path to a conformer input file
         path = args[0]
         job = StatMechJob(species=spec, path=path)
-        logging.debug('Added species {0} to a stat mech job.'.format(label))
+        logging.debug('Added species %s to a stat mech job.', label)
         job_list.append(job)
     elif len(args) > 1:
         raise InputError('species {0} can only have two non-keyword argument '
@@ -369,8 +369,8 @@ def network(label, isomers=None, reactants=None, products=None, pathReactions=No
                 [frozenset(rxn.products) == frozenset(reactant_pair) for reactant_pair in reactants])
             if reactant_is_isomer or reactant_is_reactant or product_is_isomer or product_is_reactant:
                 path_reactions.append(rxn)
-        logging.debug('Path reactions {} were found for network {}'.format(
-                       [rxn.label for rxn in path_reactions], label))
+        logging.debug('Path reactions %s were found for network %s',
+                       [rxn.label for rxn in path_reactions], label)
     else:
         path_reactions_0 = pathReactions
         path_reactions = []

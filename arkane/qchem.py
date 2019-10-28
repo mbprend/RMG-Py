@@ -250,7 +250,7 @@ class QChemLog(Log):
                     if inertia[0] == 0.0:
                         # If the first eigenvalue is 0, the rotor is linear
                         inertia.remove(0.0)
-                        logging.debug('inertia is {}'.format(str(inertia)))
+                        logging.debug('inertia is %s', str(inertia))
                         for i in range(2):
                             inertia[i] *= (constants.a0 / 1e-10) ** 2
                         inertia = np.sqrt(inertia[0] * inertia[1])
@@ -297,7 +297,7 @@ class QChemLog(Log):
             for line in f:
                 if 'Zero point vibrational energy' in line:
                     zpe = float(line.split()[4]) * 4184  # QChem's ZPE is in kcal/mol, convert to J/mol
-                    logging.debug('ZPE is {}'.format(str(zpe)))
+                    logging.debug('ZPE is %s', zpe)
         if zpe is not None:
             return zpe
         else:

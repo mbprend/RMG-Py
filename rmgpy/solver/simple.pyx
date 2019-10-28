@@ -248,7 +248,7 @@ cdef class SimpleReactor(ReactionSystem):
                 if rxn.specific_collider is None:
                     Peff = self.P.value_si * np.sum(self.collider_efficiencies[i] * y0_core_species / sum_core_species)
                 else:
-                    logging.debug("Calculating Peff using {0} as a specific_collider".format(rxn.specific_collider))
+                    logging.debug("Calculating Peff using %s as a specific_collider", rxn.specific_collider)
                     Peff = self.P.value_si * self.y0[self.species_index[rxn.specific_collider]] / sum_core_species
                 return Peff
         return self.P.value_si

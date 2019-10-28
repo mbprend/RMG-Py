@@ -127,7 +127,7 @@ cpdef kekulize(Molecule mol):
     try:
         mol.update_atomtypes(log_species=False)
     except AtomTypeError:
-        logging.debug('Unable to kekulize molecule, final result was invalid:/n{0}'.format(mol.to_adjacency_list()))
+        logging.debug('Unable to kekulize molecule, final result was invalid:\n%s', mol.to_adjacency_list())
         raise KekulizationError('Unable to kekulize molecule, final result was invalid.')
 
 cdef list prioritize_rings(list item_list):

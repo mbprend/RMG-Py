@@ -324,7 +324,7 @@ class TestArkaneSpecies(unittest.TestCase):
         cls.data_path = os.path.join(os.path.dirname(os.path.dirname(rmgpy.__file__)), 'arkane', 'data')
 
         if os.path.exists(cls.dump_yaml_file):
-            logging.debug('removing existing yaml file {0} before running tests'.format(cls.dump_yaml_file))
+            logging.debug('removing existing yaml file %s before running tests', cls.dump_yaml_file)
             os.remove(cls.dump_yaml_file)
 
     def test_dump_yaml(self):
